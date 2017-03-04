@@ -7,10 +7,20 @@ module.exports = (app, mongoose, entities) => {
   app.get("/api/messages", (req, res) => {
     var page = req.query.page;
     if (page === undefined) {
-      error.badRequest(res, "page is required");
+      res.status(400).json({
+        "error": {
+          "code": 400,
+          "message": "page is required"
+        }
+      });
       return;
     } else if (isNaN(parseInt(page)) || page <= 0) {
-      error.badRequest(res, "page should be a positive number");
+      res.status(400).json({
+        "error": {
+          "code": 400,
+          "message": "page should be a positive number"
+        }
+      });
       return;
     }
 
@@ -21,7 +31,10 @@ module.exports = (app, mongoose, entities) => {
     }).catch((error) => {
       console.error(error);
       res.status(500).json({
-        "error": true
+        "error": {
+          "code": 500,
+          "message": "internal server error"
+        }
       });
     });
   });
@@ -29,7 +42,12 @@ module.exports = (app, mongoose, entities) => {
   app.post("/api/applications", (req, res) => {
     var message = req.body.message;
     if (message === undefined) {
-      error.badRequest(res, "message is required");
+      res.status(400).json({
+        "error": {
+          "code": 400,
+          "message": "message is required"
+        }
+      });
       return;
     }
 
@@ -40,7 +58,10 @@ module.exports = (app, mongoose, entities) => {
     }).catch((error) => {
       console.error(error);
       res.status(500).json({
-        "error": true
+        "error": {
+          "code": 500,
+          "message": "internal server error"
+        }
       });
     });
   });

@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-module.exports = (app, upload, mongoose, entities, storageBucket) => {
+module.exports = (app, mongoose, entities) => {
 
   const messageService =
     require("../service/messageService")(mongoose, entities.Message);

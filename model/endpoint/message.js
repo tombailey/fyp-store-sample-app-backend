@@ -26,7 +26,7 @@ module.exports = (app, mongoose, entities) => {
 
     messageService.getMessages(page).then((messages) => {
       res.status(200).json({
-        "messages": messsages
+        "messages": messages
       });
     }).catch((error) => {
       console.error(error);

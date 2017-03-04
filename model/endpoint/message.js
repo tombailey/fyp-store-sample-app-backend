@@ -39,7 +39,7 @@ module.exports = (app, mongoose, entities) => {
     });
   });
 
-  app.post("/api/applications", (req, res) => {
+  app.post("/api/messages", (req, res) => {
     var message = req.body.message;
     if (message === undefined) {
       res.status(400).json({

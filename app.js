@@ -28,7 +28,7 @@ function setupMongoose() {
       resolve({
         "mongoose": mongoose,
         "entities": {
-          "Messsage": Message
+          "Message": Message
         }
       });
     });
